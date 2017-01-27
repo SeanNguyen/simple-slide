@@ -23,21 +23,21 @@ default: &default
 
 development:
   <<: *default
-  database: simple-slide_development
+  database: simple-slide-development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: simple-slide
+  username: simple-slide
 
   # The password associated with the postgres role (username).
-  #password:
+  password: password12
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
@@ -57,7 +57,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: simple-slide_test
+  database: simple-slide-test
+  username: simple-slide
+  password: password12
+  host: localhost
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -75,11 +78,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+#  production:
+#  url: <%= ENV['DATABASE_URL'] %>
 #
 production:
   <<: *default
-  database: simple-slide_production
+  database: simple-slide-production
   username: simple-slide
   password: <%= ENV['SIMPLE-SLIDE_DATABASE_PASSWORD'] %>
